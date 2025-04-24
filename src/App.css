@@ -50,7 +50,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('C:\VSCode projects\SERV_7\frontend\src\maxresdefault.jpg'); /* Замени на свой путь */
+    background-image: url('C:\VSCode projects\SERVERS-7\frontend\src\maxresdefault.jpg'); /* Замени на свой путь */
     background-size: cover; /* Растягиваем изображение на весь экран */
     background-position: center; /* Центрируем изображение */
     opacity: 0.3; /* Делаем полупрозрачным */
