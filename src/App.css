@@ -1,37 +1,43 @@
-/* src/App.css - Полный код дизайна с улучшенной кнопкой */
+/* src/App.css - Полный код дизайна "Квантовая сеть для межпланетной торговли" */
 
+/* Определение переменных для цветов, чтобы легко управлять палитрой */
 :root {
-  /* Определение переменных для цветов */
   --color-bg-dark: #0b001a; /* Очень темный фон космоса */
   --color-bg-medium: #1c0033; /* Темнее фон контейнеров */
   --color-bg-light: #2d004d; /* Фон чата */
-  --color-accent-blue: #00eaff; /* Бирюзовый акцент/свечение */
-  --color-accent-purple: #aa00ff; /* Фиолетовый акцент/свечение */
+
+  --color-accent-blue: #00eaff; /* Бирюзовый акцент/свечение (для исходящих/системных) */
+  --color-accent-purple: #aa00ff; /* Фиолетовый акцент/свечение (для своих/активных) */
+
   --color-text-primary: #e0ccff; /* Светлый текст с фиолетовым оттенком */
-  --color-text-secondary: #a080b0; /* Второстепенный текст */
-  --color-border: #5500aa; /* Цвет рамок */
+  --color-text-secondary: #a080b0; /* Второстепенный текст (плейсхолдеры, опц. ID) */
+
+  --color-border: #5500aa; /* Цвет рамок и разделителей */
+
   --color-input-bg: #0a0014; /* Фон поля ввода */
   --color-input-text: #00ffb3; /* Цвет текста в поле ввода (салатовый) */
+
   --color-button-gradient-start: #00ccff; /* Начальный цвет градиента кнопки */
   --color-button-gradient-end: #aa00ff; /* Конечный цвет градиента кнопки */
   --color-button-glow-start: rgba(0, 204, 255, 0.8); /* Цвет свечения кнопки 1 */
   --color-button-glow-end: rgba(170, 0, 255, 0.6); /* Цвет свечения кнопки 2 */
 }
 
+/* Стили для всего тела страницы */
 body {
   margin: 0;
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-primary);
-  min-height: 100vh;
+  background-color: var(--color-bg-dark); /* Применяем темный фон */
+  color: var(--color-text-primary); /* Применяем основной цвет текста */
+  min-height: 100vh; /* Минимальная высота на весь экран */
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: center; /* Центрируем контент по горизонтали */
+  align-items: center; /* Центрируем контент по вертикали */
   padding: 20px;
-  box-sizing: border-box;
-  overflow-y: auto;
+  box-sizing: border-box; /* Включаем padding в общий размер */
+  overflow-y: auto; /* Добавляем скролл, если контент превышает высоту экрана */
 }
 
 /* Опционально: Стили для фонового изображения с эффектом туманности */
@@ -39,17 +45,17 @@ body {
 
 body::before {
     content: '';
-    position: fixed;
+    position: fixed; /* Фиксируем на заднем плане */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-image: url('C:\VSCode projects\SERV_7\frontend\src\maxresdefault.jpg'); /* Замени на свой путь */
-    background-size: cover;
-    background-position: center;
-    opacity: 0.3;
-    z-index: -1;
-    animation: subtle-pan 30s infinite alternate ease-in-out;
+    background-size: cover; /* Растягиваем изображение на весь экран */
+    background-position: center; /* Центрируем изображение */
+    opacity: 0.3; /* Делаем полупрозрачным */
+    z-index: -1; /* Отправляем на самый задний план */
+    animation: subtle-pan 30s infinite alternate ease-in-out; /* Пример плавной анимации движения фона */
 }
 
 @keyframes subtle-pan {
@@ -59,87 +65,94 @@ body::before {
 */
 
 
+/* Основной контейнер приложения */
 .App {
   text-align: center;
-  padding: 30px;
-  background-color: rgba(var(--color-bg-medium), 0.8);
-  border-radius: 20px;
-  box-shadow: 0 0 40px rgba(var(--color-accent-purple), 0.4);
-  max-width: 800px;
-  width: 100%;
+  padding: 30px; /* Увеличим padding */
+  background-color: rgba(var(--color-bg-medium), 0.8); /* Полупрозрачный фон контейнера */
+  border-radius: 20px; /* Больший радиус скругления */
+  box-shadow: 0 0 40px rgba(var(--color-accent-purple), 0.4); /* Мягкое свечение по контуру */
+  max-width: 800px; /* Сделаем шире */
+  width: 100%; /* Адаптивность по ширине */
   box-sizing: border-box;
-  backdrop-filter: blur(5px);
-  position: relative;
-  z-index: 2;
+  backdrop-filter: blur(5px); /* Эффект размытия фона под контейнером */
+  position: relative; /* Необходимо для z-index */
+  z-index: 2; /* Убедимся, что контейнер над фоновым изображением */
 }
 
+/* Заголовок чата */
 .App-header h1 {
-  color: var(--color-accent-blue);
-  text-shadow: 0 0 15px rgba(var(--color-accent-blue), 0.6), 0 0 30px rgba(var(--color-accent-blue), 0.4);
-  margin-bottom: 40px;
-  font-size: 2.8em;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  color: var(--color-accent-blue); /* Бирюзовый цвет */
+  text-shadow: 0 0 15px rgba(var(--color-accent-blue), 0.6), 0 0 30px rgba(var(--color-accent-blue), 0.4); /* Эффект свечения */
+  margin-bottom: 40px; /* Отступ снизу */
+  font-size: 2.8em; /* Размер шрифта */
+  letter-spacing: 3px; /* Интервал между буквами */
+  text-transform: uppercase; /* Все буквы заглавные */
 }
 
 /* Стили контейнера чата с голографическим эффектом */
 .chat-container {
-  position: relative;
-  border: 1px solid var(--color-border);
-  border-radius: 15px;
-  overflow: hidden;
+  position: relative; /* Необходимо для позиционирования псевдоэлементов ::before/::after */
+  border: 1px solid var(--color-border); /* Фиолетовая рамка */
+  border-radius: 15px; /* Скругление углов */
+  overflow: hidden; /* Скрываем контент, который вылезает */
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 500px; /* Фиксированная высота */
 
-  background-color: rgba(var(--color-bg-light), 0.3);
+  /* Основной голографический фон - более прозрачный */
+  background-color: rgba(var(--color-bg-light), 0.3); /* Полупрозрачный фон */
+
+  /* Добавляем тонкий узор сетки из градиентов */
   background-image:
-    linear-gradient(0deg, rgba(var(--color-accent-blue), 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(var(--color-accent-blue), 0.1) 1px, transparent 1px);
-  background-size: 25px 25px;
-  background-position: center center;
+    linear-gradient(0deg, rgba(var(--color-accent-blue), 0.1) 1px, transparent 1px), /* Горизонтальные линии */
+    linear-gradient(90deg, rgba(var(--color-accent-blue), 0.1) 1px, transparent 1px); /* Вертикальные линии */
+  background-size: 25px 25px; /* Размер ячейки сетки - можно менять */
+  background-position: center center; /* Центрируем узор */
 
+  /* Свечение вокруг контейнера */
   box-shadow:
-    inset 0 0 30px rgba(var(--color-border), 0.2),
-    0 0 40px rgba(var(--color-accent-blue), 0.3),
-    0 0 50px rgba(var(--color-accent-purple), 0.2);
+    inset 0 0 30px rgba(var(--color-border), 0.2), /* Внутренняя тень/свечение */
+    0 0 40px rgba(var(--color-accent-blue), 0.3), /* Внешнее синее свечение */
+    0 0 50px rgba(var(--color-accent-purple), 0.2); /* Внешнее фиолетовое свечение */
 
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); /* Усилим эффект размытия фона за контейнером */
 }
 
-/* Псевдоэлемент для имитации сканирующих строк */
+/* Псевдоэлемент для имитации сканирующих строк или шума */
 .chat-container::before {
   content: '';
-  position: absolute;
+  position: absolute; /* Абсолютное позиционирование внутри родителя с position: relative */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  background-image: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.05) 50%);
-  background-size: 100% 3px;
-  opacity: 0.4;
-  z-index: 1;
-  animation: scanlines 8s linear infinite;
+  pointer-events: none; /* Элемент не будет мешать кликам и взаимодействию с чатом */
+  background-image: linear-gradient(to bottom, transparent 50%, rgba(0, 255, 255, 0.05) 50%); /* Очень тонкие бирюзовые линии */
+  background-size: 100% 3px; /* Высота линии и интервал */
+  opacity: 0.4; /* Уменьшим непрозрачность */
+  z-index: 1; /* Расположим над основным фоном, но под текстом сообщений */
+  animation: scanlines 8s linear infinite; /* Медленная анимация движения */
 }
 
 /* Ключевые кадры для анимации сканирующих строк */
 @keyframes scanlines {
   from { background-position: 0 0; }
-  to { background-position: 0 100%; }
+  to { background-position: 0 100%; } /* Движение сверху вниз */
 }
 
 
+/* Список сообщений */
 .messages-list {
-  flex-grow: 1;
+  flex-grow: 1; /* Занимает все доступное пространство по высоте */
   padding: 20px;
-  overflow-y: auto;
+  overflow-y: auto; /* Делаем прокручиваемым по вертикали */
   text-align: left;
-  word-break: break-word;
-  display: flex;
-  flex-direction: column;
+  word-break: break-word; /* Перенос длинных слов */
+  display: flex; /* Используем flexbox */
+  flex-direction: column; /* Элементы идут друг за другом сверху вниз */
 
-  /* Стилизация скроллбара */
+  /* Стилизация скроллбара (работает в Webkit-браузерах: Chrome, Safari) */
   &::-webkit-scrollbar {
     width: 8px;
   }
@@ -155,43 +168,69 @@ body::before {
   }
 }
 
-/* Анимация появления сообщений */
+/* Анимация появления каждого сообщения */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(10px); } /* Начинаем невидимым и немного смещенным вниз */
+  to { opacity: 1; transform: translateY(0); } /* Становится видимым и на своем месте */
 }
 
+/* Стили для отдельного сообщения */
 .message {
   margin-bottom: 15px;
   padding: 12px 15px;
-  background-color: rgba(var(--color-border), 0.15);
+  background-color: rgba(var(--color-border), 0.15); /* Полупрозрачный фон сообщения */
   border-radius: 8px;
-  border-left: 4px solid var(--color-accent-blue);
+  border-left: 4px solid var(--color-accent-blue); /* Бирюзовая полоска слева */
   color: var(--color-text-primary);
   font-size: 1.1em;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out forwards;
+  opacity: 0; /* Изначально скрыто для анимации появления */
+  animation: fadeIn 0.5s ease-out forwards; /* Применяем анимацию появления */
+  /* flexbox свойства для выравнивания */
+  align-self: flex-start; /* По умолчанию выравнивание слева */
+  max-width: 85%; /* Ограничиваем ширину сообщения */
 }
 
-/* Опциональные стили для системных сообщений */
+/* Стили для сообщений, отправленных текущим пользователем */
+.message.mine {
+  /* Выравнивание по правому краю */
+  margin-left: auto; /* Автоматический левый отступ выталкивает блок вправо */
+  margin-right: 0; /* Обнуляем правый отступ */
+  text-align: right; /* Выравнивание текста внутри блока по правому краю */
+  align-self: flex-end; /* Выравнивание блока сообщения по правому краю */
+
+  /* Изменение внешнего вида */
+  background-color: rgba(var(--color-accent-purple), 0.2); /* Используем фиолетовый акцент для фона */
+  border-left-color: transparent; /* Убираем левую границу */
+  border-right: 4px solid var(--color-accent-purple); /* Добавляем фиолетовую границу справа */
+
+  /* Опционально: Немного другое свечение для своих сообщений */
+   /* box-shadow: 0 0 8px rgba(var(--color-accent-purple), 0.3); */
+}
+
+/* Опциональные стили для системных сообщений (если они нужны) */
+/* Например, если сообщение с senderId: 'system' */
 /*
 .message.system {
     border-left-color: var(--color-accent-purple);
     color: var(--color-text-secondary);
     font-style: italic;
+    align-self: center; // Или flex-start/flex-end, как нужно
+    text-align: center;
 }
 */
 
 
+/* Область ввода сообщения */
 .input-area {
   display: flex;
   padding: 20px;
-  border-top: 1px solid var(--color-border);
-  background-color: rgba(var(--color-bg-dark), 0.9);
+  border-top: 1px solid var(--color-border); /* Разделительная линия сверху */
+  background-color: rgba(var(--color-bg-dark), 0.9); /* Почти непрозрачный темный фон */
 }
 
+/* Поле ввода текста */
 .input-area input {
-  flex-grow: 1;
+  flex-grow: 1; /* Занимает все доступное пространство */
   margin-right: 15px;
   padding: 12px;
   border: 1px solid var(--color-border);
@@ -199,26 +238,28 @@ body::before {
   background-color: var(--color-input-bg);
   color: var(--color-input-text);
   font-size: 1.1em;
-  outline: none;
-  box-shadow: inset 0 0 8px rgba(var(--color-accent-blue), 0.1);
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  outline: none; /* Убираем стандартную обводку */
+  box-shadow: inset 0 0 8px rgba(var(--color-accent-blue), 0.1); /* Внутреннее свечение */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Плавные переходы */
 }
 
+/* Стили для плейсхолдера в поле ввода */
 .input-area input::placeholder {
     color: var(--color-text-secondary);
     opacity: 0.7;
 }
 
+/* Стили поля ввода при фокусе */
 .input-area input:focus {
     border-color: var(--color-accent-blue);
     box-shadow: inset 0 0 12px rgba(var(--color-accent-blue), 0.4);
-    background-color: #140021;
+    background-color: #140021; /* Чуть светлее фон */
 }
 
-/* Улучшенные стили и анимация для кнопки */
+/* Стили самой кнопки */
 .input-area button {
   padding: 12px 25px;
-  background: linear-gradient(45deg, var(--color-button-gradient-start), var(--color-button-gradient-end));
+  background: linear-gradient(45deg, var(--color-button-gradient-start), var(--color-button-gradient-end)); /* Градиентный фон */
   color: white;
   border: none; /* Убираем стандартную границу */
   border-radius: 8px;
@@ -245,6 +286,7 @@ body::before {
   -ms-user-select: none;
 }
 
+/* Стили кнопки при наведении курсора */
 .input-area button:hover {
   /* Меняем градиент при наведении */
   background: linear-gradient(45deg, var(--color-button-gradient-end), var(--color-button-gradient-start));
@@ -259,6 +301,7 @@ body::before {
   transform: scale(1.05);
 }
 
+/* Стили кнопки при активном состоянии (нажатии) */
 .input-area button:active {
     /* Усиливаем свечение при нажатии */
     box-shadow:
