@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
-}
+/* src/App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Фон в космических тонах */
+  background: linear-gradient(135deg, #0a0a23, #1a0a3a, #2a0a4a); /* Темный градиент космоса */
+  color: #e0e0e0; /* Светлый текст для темного фона */
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App {
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(30, 15, 60, 0.8); /* Полупрозрачный фон для контейнера приложения */
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(70, 0, 150, 0.5); /* Легкое свечение по контуру */
+  max-width: 700px; /* Чуть шире для лучшего вида */
+  width: 95%; /* Адаптивность */
+}
+
+.App-header h1 {
+  /* Заголовок в футуристическом стиле */
+  color: #00ffff; /* Бирюзовый цвет */
+  text-shadow: 0 0 10px #00ffff, 0 0 20px #00cccc; /* Эффект свечения */
+  margin-bottom: 30px;
+  font-size: 2.5em;
+  letter-spacing: 2px;
+}
+
+.chat-container {
+  border: 1px solid #5a2e8a; /* Фиолетовая рамка */
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 450px; /* Чуть больше высота */
+  background-color: rgba(10, 5, 25, 0.9); /* Темнее фон для области чата */
+  box-shadow: inset 0 0 15px rgba(50, 0, 100, 0.3); /* Внутренняя тень */
+}
+
+.messages-list {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  text-align: left;
+  word-break: break-word;
+  /* Стилизация скроллбара (для Webkit браузеров) */
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: #1a0a3a;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #5a2e8a;
+    border-radius: 5px;
+  }
+}
+
+.message {
+  margin-bottom: 12px; /* Увеличим отступ */
+  padding: 8px 12px;
+  background-color: rgba(90, 46, 138, 0.3); /* Полупрозрачный фон сообщения */
+  border-radius: 6px;
+  border-left: 3px solid #00ffff; /* Бирюзовая полоска слева */
+  color: #e0e0e0; /* Цвет текста сообщения */
+  font-size: 1em;
+}
+
+/* Опционально: разные стили для сообщений от разных источников, если бы они были */
+/* .message.system {
+    border-left-color: #ff9900;
+} */
+
+
+.input-area {
+  display: flex;
+  padding: 15px; /* Больше отступ */
+  border-top: 1px solid #5a2e8a;
+  background-color: rgba(20, 10, 40, 0.95); /* Темный фон для области ввода */
+}
+
+.input-area input {
+  flex-grow: 1;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #5a2e8a; /* Фиолетовая рамка */
+  border-radius: 5px;
+  background-color: #0d0d2a; /* Очень темный фон поля ввода */
+  color: #00ff99; /* Салатовый цвет текста */
+  font-size: 1em;
+  outline: none; /* Убираем стандартную обводку при фокусе */
+  box-shadow: inset 0 0 5px rgba(0, 255, 153, 0.2); /* Внутреннее свечение при фокусе */
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.input-area input:focus {
+    border-color: #00ffff; /* Бирюзовая рамка при фокусе */
+    box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.4); /* Усиленное свечение при фокусе */
+}
+
+.input-area button {
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #00ccff, #aa00ff); /* Градиент на кнопке */
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 204, 255, 0.5); /* Легкое свечение кнопки */
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-area button:hover {
+  background: linear-gradient(45deg, #aa00ff, #00ccff); /* Смена градиента при наведении */
+  box-shadow: 0 0 15px rgba(170, 0, 255, 0.7); /* Усиленное свечение при наведении */
 }
