@@ -1,131 +1,204 @@
-/* src/App.css */
+/* src/App.css - Дизайн "Квантовая сеть для межпланетной торговли" */
+
+:root {
+  /* Определение переменных для цветов */
+  --color-bg-dark: #0b001a; /* Очень темный фон космоса */
+  --color-bg-medium: #1c0033; /* Темнее фон контейнеров */
+  --color-bg-light: #2d004d; /* Фон чата */
+  --color-accent-blue: #00eaff; /* Бирюзовый акцент/свечение */
+  --color-accent-purple: #aa00ff; /* Фиолетовый акцент/свечение */
+  --color-text-primary: #e0ccff; /* Светлый текст с фиолетовым оттенком */
+  --color-text-secondary: #a080b0; /* Второстепенный текст */
+  --color-border: #5500aa; /* Цвет рамок */
+  --color-input-bg: #0a0014; /* Фон поля ввода */
+  --color-input-text: #00ffb3; /* Цвет текста в поле ввода (салатовый) */
+  --color-button-gradient-start: #00ccff;
+  --color-button-gradient-end: #aa00ff;
+}
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Фон в космических тонах */
-  background: linear-gradient(135deg, #0a0a23, #1a0a3a, #2a0a4a); /* Темный градиент космоса */
-  color: #e0e0e0; /* Светлый текст для темного фона */
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  box-sizing: border-box; /* Включаем padding в размер элемента */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Опционально: Стили для фонового изображения с эффектом туманности */
+    body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('C:\VSCode projects\SERV_7\frontend\src\maxresdefault.jpg'); /* Замени на свой путь */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3; /* Полупрозрачность */
+    z-index: -1; /* На задний план */
+    animation: subtle-pan 30s infinite alternate ease-in-out; /* Пример анимации фона */
 }
+
+@keyframes subtle-pan {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 100% 100%; }
+}
+*/
+
 
 .App {
   text-align: center;
-  padding: 20px;
-  background-color: rgba(30, 15, 60, 0.8); /* Полупрозрачный фон для контейнера приложения */
-  border-radius: 15px;
-  box-shadow: 0 0 30px rgba(70, 0, 150, 0.5); /* Легкое свечение по контуру */
-  max-width: 700px; /* Чуть шире для лучшего вида */
-  width: 95%; /* Адаптивность */
+  padding: 30px; /* Увеличим padding */
+  background-color: rgba(var(--color-bg-medium), 0.8); /* Полупрозрачный фон */
+  border-radius: 20px; /* Больший радиус скругления */
+  box-shadow: 0 0 40px rgba(var(--color-accent-purple), 0.4); /* Более мягкое свечение */
+  max-width: 800px; /* Сделаем еще шире */
+  width: 100%;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px); /* Эффект размытия под контейнером */
 }
 
 .App-header h1 {
-  /* Заголовок в футуристическом стиле */
-  color: #00ffff; /* Бирюзовый цвет */
-  text-shadow: 0 0 10px #00ffff, 0 0 20px #00cccc; /* Эффект свечения */
-  margin-bottom: 30px;
-  font-size: 2.5em;
-  letter-spacing: 2px;
+  color: var(--color-accent-blue);
+  text-shadow: 0 0 15px rgba(var(--color-accent-blue), 0.6), 0 0 30px rgba(var(--color-accent-blue), 0.4); /* Мягкое свечение */
+  margin-bottom: 40px; /* Больший отступ */
+  font-size: 2.8em;
+  letter-spacing: 3px; /* Больший интервал между буквами */
+  text-transform: uppercase; /* Все буквы заглавные */
 }
 
 .chat-container {
-  border: 1px solid #5a2e8a; /* Фиолетовая рамка */
-  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  height: 450px; /* Чуть больше высота */
-  background-color: rgba(10, 5, 25, 0.9); /* Темнее фон для области чата */
-  box-shadow: inset 0 0 15px rgba(50, 0, 100, 0.3); /* Внутренняя тень */
+  height: 500px; /* Большая высота */
+  background-color: rgba(var(--color-bg-light), 0.7); /* Полупрозрачный фон чата */
+  box-shadow: inset 0 0 20px rgba(var(--color-border), 0.3); /* Внутренняя тень/свечение */
 }
 
 .messages-list {
   flex-grow: 1;
-  padding: 15px;
+  padding: 20px; /* Увеличим padding */
   overflow-y: auto;
   text-align: left;
   word-break: break-word;
-  /* Стилизация скроллбара (для Webkit браузеров) */
+  display: flex; /* Используем flexbox для сообщений */
+  flex-direction: column;
+
+  /* Стилизация скроллбара */
   &::-webkit-scrollbar {
     width: 8px;
   }
   &::-webkit-scrollbar-track {
-    background: #1a0a3a;
+    background: var(--color-bg-medium);
   }
   &::-webkit-scrollbar-thumb {
-    background-color: #5a2e8a;
+    background-color: var(--color-border);
     border-radius: 5px;
   }
+   &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-accent-purple);
+  }
+}
+
+/* Анимация появления сообщений */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .message {
-  margin-bottom: 12px; /* Увеличим отступ */
-  padding: 8px 12px;
-  background-color: rgba(90, 46, 138, 0.3); /* Полупрозрачный фон сообщения */
-  border-radius: 6px;
-  border-left: 3px solid #00ffff; /* Бирюзовая полоска слева */
-  color: #e0e0e0; /* Цвет текста сообщения */
-  font-size: 1em;
+  margin-bottom: 15px; /* Увеличим отступ */
+  padding: 12px 15px; /* Увеличим padding */
+  background-color: rgba(var(--color-border), 0.2); /* Мягкий полупрозрачный фон сообщения */
+  border-radius: 8px;
+  border-left: 4px solid var(--color-accent-blue); /* Бирюзовая полоска */
+  color: var(--color-text-primary);
+  font-size: 1.1em; /* Немного крупнее шрифт */
+  opacity: 0; /* Изначально скрыто для анимации */
+  animation: fadeIn 0.5s ease-out forwards; /* Применяем анимацию */
+  /* Задержка анимации для последовательного появления сообщений (требует JS или другого подхода для идеальной реализации) */
+  /* animation-delay: calc(var(--message-index) * 50ms); */
 }
 
-/* Опционально: разные стили для сообщений от разных источников, если бы они были */
+/* Опциональные стили для системных сообщений */
 /* .message.system {
-    border-left-color: #ff9900;
+    border-left-color: var(--color-accent-purple);
+    color: var(--color-text-secondary);
+    font-style: italic;
 } */
 
 
 .input-area {
   display: flex;
-  padding: 15px; /* Больше отступ */
-  border-top: 1px solid #5a2e8a;
-  background-color: rgba(20, 10, 40, 0.95); /* Темный фон для области ввода */
+  padding: 20px; /* Больший padding */
+  border-top: 1px solid var(--color-border);
+  background-color: rgba(var(--color-bg-dark), 0.9); /* Почти непрозрачный темный фон */
 }
 
 .input-area input {
   flex-grow: 1;
-  margin-right: 10px;
-  padding: 10px;
-  border: 1px solid #5a2e8a; /* Фиолетовая рамка */
-  border-radius: 5px;
-  background-color: #0d0d2a; /* Очень темный фон поля ввода */
-  color: #00ff99; /* Салатовый цвет текста */
-  font-size: 1em;
-  outline: none; /* Убираем стандартную обводку при фокусе */
-  box-shadow: inset 0 0 5px rgba(0, 255, 153, 0.2); /* Внутреннее свечение при фокусе */
+  margin-right: 15px; /* Увеличим отступ */
+  padding: 12px; /* Увеличим padding */
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-input-bg);
+  color: var(--color-input-text);
+  font-size: 1.1em;
+  outline: none;
+  box-shadow: inset 0 0 8px rgba(var(--color-accent-blue), 0.1); /* Внутреннее свечение */
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
+.input-area input::placeholder {
+    color: var(--color-text-secondary); /* Цвет плейсхолдера */
+    opacity: 0.7;
+}
+
 .input-area input:focus {
-    border-color: #00ffff; /* Бирюзовая рамка при фокусе */
-    box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.4); /* Усиленное свечение при фокусе */
+    border-color: var(--color-accent-blue);
+    box-shadow: inset 0 0 12px rgba(var(--color-accent-blue), 0.4); /* Усиленное свечение при фокусе */
+     background-color: #140021; /* Чуть светлее фон при фокусе */
 }
 
 .input-area button {
-  padding: 10px 20px;
-  background: linear-gradient(45deg, #00ccff, #aa00ff); /* Градиент на кнопке */
+  padding: 12px 25px; /* Больший padding */
+  background: linear-gradient(45deg, var(--color-button-gradient-start), var(--color-button-gradient-end));
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.1em;
   font-weight: bold;
-  box-shadow: 0 0 10px rgba(0, 204, 255, 0.5); /* Легкое свечение кнопки */
-  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 0 15px rgba(var(--color-button-gradient-start), 0.6); /* Свечение кнопки */
+  transition: background 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.1s ease-in-out;
 }
 
 .input-area button:hover {
-  background: linear-gradient(45deg, #aa00ff, #00ccff); /* Смена градиента при наведении */
-  box-shadow: 0 0 15px rgba(170, 0, 255, 0.7); /* Усиленное свечение при наведении */
+  background: linear-gradient(45deg, var(--color-button-gradient-end), var(--color-button-gradient-start)); /* Смена градиента */
+  box-shadow: 0 0 20px rgba(var(--color-button-gradient-end), 0.8); /* Усиленное свечение */
 }
+
+.input-area button:active {
+    transform: scale(0.98); /* Легкое сжатие при нажатии */
+}
+
+/* Стили для placeholder'а, куда можно было бы добавить инфографику */
+/* .info-panel {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px dashed var(--color-accent-purple);
+    border-radius: 10px;
+    color: var(--color-text-secondary);
+    font-style: italic;
+} */
